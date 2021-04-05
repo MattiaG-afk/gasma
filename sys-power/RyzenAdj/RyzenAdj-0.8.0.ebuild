@@ -15,7 +15,7 @@ DEPEND="sys-apps/pciutils"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-  rm -r win32 .github .gitignore
+	rm -r win32 .github .gitignore
 }
 
 src_compile() {
