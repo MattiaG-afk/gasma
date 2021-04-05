@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Adjust power management settings for Mobile Raven Ridge Ryzen Processors"
-HOMEPAGE="https://github.com/FlyGoat/RyzenAdj"
-SRC_URI="https://github.com/FlyGoat/RyzenAdj/archive/refs/tags/v0.7.1.tar.gz"
+HOMEPAGE="https://github.com/FlyGoat/${PN}"
+SRC_URI="https://github.com/FlyGoat/${PN}/archive/refs/tags/v${PV}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -13,7 +13,10 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="sys-apps/pciutils"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+
+src_prepare() {
+	rm -r win32 .github .gitignore
+}
 
 src_compile() {
 	mkdir build && cd build
