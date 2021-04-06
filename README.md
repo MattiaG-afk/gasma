@@ -5,13 +5,7 @@ This is my repository of .ebuilds file
 You have to copy the repository in the /var/db/repos directory:
 ```shell
 sudo git clone https://github.com/MattiaG-afk/gasma-repository /var/db/repos/gasma
-sudo echo "[gasma]\nlocation = /var/db/repos/gasma" >> /etc/portage/repos.conf/gasma.conf
-```
-
-At the moment if you want to update the ebuilds in the repository you have to delete and re-clone the repository:
-```shell
-sudo rm -rf /var/db/repos/gasma
-sudo git clone https://github.com/MattiaG-afk/gasma-repository /var/db/repos/gasma
+sudo echo "[DEFAULT]\nmain-repo = gentoo\n\n[gasma]\nlocation = /var/lib/overlays/gasma\nsync-type = git/nsync-uri = https://github.com/MattiaG-afk/gasma\nauto-sync = yes\nclone-depth = 1" >> /etc/portage/repos.conf/gasma.conf
 ```
 
 ## Contacts
