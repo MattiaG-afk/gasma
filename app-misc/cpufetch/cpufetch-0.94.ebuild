@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_compile() {
-	make
+	emake
 }
 
 src_install() {
