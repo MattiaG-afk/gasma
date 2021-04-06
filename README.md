@@ -2,9 +2,17 @@
 This is my repository of .ebuilds file
 
 ## Installation
-You have to copy the repository in the /var/db/repos directory:
+Create /etc/portage/repos.conf/gasma.conf file and add the following lines
 ```shell
-sudo echo "[DEFAULT]\nmain-repo = gentoo\n\n[gasma]\nlocation = /var/lib/overlays/gasma\nsync-type = git/nsync-uri = https://github.com/MattiaG-afk/gasma\nauto-sync = yes\nclone-depth = 1" > /etc/portage/repos.conf/gasma.conf
+[DEFAULT]
+main-repo = gentoo
+
+[gasma]
+location = /var/lib/overlays/gasma
+sync-type = git
+sync-uri = https://github.com/MattiaG-afk/gasma
+auto-sync = yes
+clone-depth = 1
 ```
 
 ## Contacts
