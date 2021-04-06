@@ -15,5 +15,10 @@ auto-sync = yes
 clone-depth = 1
 ```
 
+Now you have to run:
+```shell
+sudo emerge --sync gasma
+```
+
 ## Contacts
 If you need an ebuild but you don't know how to do it you can contact me and I'll do it for you (of course I'll add it here)
