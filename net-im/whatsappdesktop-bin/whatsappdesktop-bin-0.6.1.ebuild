@@ -13,7 +13,7 @@ LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-S="/var/tmp/portage/net-im/whatsappdesktop-bin-0.6.1/work"
+S="${WORKDIR}"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
