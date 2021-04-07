@@ -13,7 +13,7 @@ LICENSE="CC0 1.0 Universal"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-S="/var/tmp/portage/sys-power/ryzen-controller-bin-2.4.0/work"
+S="${WORKDIR}"
 
 DEPEND="sys-power/RyzenAdj"
 RDEPEND="${DEPEND}"
