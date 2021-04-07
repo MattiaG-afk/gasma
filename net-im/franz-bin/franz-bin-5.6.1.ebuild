@@ -9,7 +9,7 @@ DESCRIPTION="Free messaging app for services like WhatsApp, Slack, Messenger and
 HOMEPAGE="http://meetfranz.com/"
 SRC_URI="https://github.com/meetfranz/franz/releases/download/v5.6.1/franz_${PV}_amd64.deb"
 
-S="/var/tmp/portage/net-im/franz-bin-5.6.1/work"
+S="${WORKDIR}"
 
 LICENSE="Apache"
 SLOT="0"
