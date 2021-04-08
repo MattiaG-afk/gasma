@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Simplistic yet fancy CPU architecture fetching tool"
 HOMEPAGE="https://github.com/Dr-Noob/${PN}"
-SRC_URI="https://github.com/Dr-Noob/${PN}/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/Dr-Noob/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,5 +16,7 @@ src_compile() {
 }
 
 src_install() {
-	install -Dm755 cpufetch ${D}/usr/bin/cpufetch
+	insinto /usr/bin
+	doins ${S}/cpufetch
+	fperms +x /usr/bin/${PN}
 }
