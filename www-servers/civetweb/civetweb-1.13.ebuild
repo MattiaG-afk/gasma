@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Embedded C/C++ web server"
 HOMEPAGE="https://github.com/civetweb/civetweb"
-SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,7 +16,6 @@ IUSE="cxx +server ssl"
 
 DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_prepare() {
 	cmake_src_prepare
@@ -35,4 +34,3 @@ src_configure() {
 	)
 	cmake_src_configure
 }
-
