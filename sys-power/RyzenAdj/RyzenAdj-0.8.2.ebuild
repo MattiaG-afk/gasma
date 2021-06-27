@@ -1,7 +1,7 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Adjust power management settings for Mobile Raven Ridge Ryzen Processors"
 HOMEPAGE="https://github.com/FlyGoat/${PN}"
