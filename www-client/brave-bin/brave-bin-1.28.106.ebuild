@@ -105,7 +105,7 @@ src_install() (
 			exeinto ${BRAVE_HOME}
 				doexe brave crashpad_handler
 
-		dosym ${BRAVE_HOME}/brave /usr/bin/${PN} || die
+		dosym ${BRAVE_HOME}/brave /usr/bin/brave || die
 
 	# Install Icons for Brave. 
 		newicon "${FILESDIR}/braveAbout.png" "brave.png" || die
