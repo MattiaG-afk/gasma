@@ -102,7 +102,7 @@ src_install() {
 	exeinto ${BRAVE_HOME}
 		doexe brave
 
-	dosym ${BRAVE_HOME}/brave /usr/bin/${PN} || die
+	dosym ${BRAVE_HOME}/brave /usr/bin/brave || die
 
 	newicon "${FILESDIR}/braveAbout.png" "brave.png" || die
 	newicon -s 128 "${FILESDIR}/braveAbout.png" "brave.png" || die
