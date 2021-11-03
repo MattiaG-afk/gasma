@@ -3,26 +3,61 @@
 
 EAPI=8
 
+inherit meson ninja-utils
+
 DESCRIPTION="A wayland based logout menu"
 HOMEPAGE="https://github.com/ArtsyMacaw/wlogout"
-SRC_URI="https://github.com/ArtsyMacaw/wlogout/archive/refs/tags/1.1.1.tar.gz"
+SRC_URI="https://github.com/ArtsyMacaw/${PN}/archive/refs/tags/${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="layershell man-pages bash-completions fish-completions zsh-completions"
 
-DEPEND="x11-libs/gtk+
-                dev-libs/gobject-introspection
-                gui-libs/gtk-layer-shell"
+DEPEND="x11-libs/gtk+:=
+		dev-libs/gobject-introspection
+		man-pages? ( app-text/scdoc )
+		layershell? ( gui-libs/gtk-layer-shell )"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-util/meson
-                dev-util/ninja"
+
+src_configure() {
+	local emesonarg=(
+		$(meson_use layershell)
+		$(meson_use man-pages)
+		$(meson_use bash-completions)
+		$(meson_use fish-completions)
+		$(meson_use zsh-completions)
+	)
+
+	meson_src_configure
+}
 
 src_compile() {
-        meson build --prefix ${D}/usr
-        ninja -C build
+	meson_src_compile
+	eninja -C "$BUILD_DIR"
 }
 
 src_install() {
-        DESTDIR="${D}" ninja -C build install
+	# Install exe file
+	exeinto /usr/local/bin
+	doexe "${BUILD_DIR}/${PN}"
+
+	# Install completions if enabled
+	if use bash-completions; then
+		insinto /usr/local/share/bash-completions/
+		doins "${BUILD_DIR}/${PN}.bash" "completions"
+	fi
+	if use fish-completions; then
+		insinto /usr/local/share/fish/
+		doins "${BUILD_DIR}/${PN}.fish" "completions"
+	fi
+	if use zsh-completions; then
+		insinto /usr/local/share/zsh/
+		doins "${BUILD_DIR}/_${PN}" "site-functions"
+	fi
+
+	# Install docs
+	if use man-pages; then
+		dodoc "${BUILD_DIR}/${PN}.1" "${BUILD_DIR}/${PN}.5"
+	fi
 }
